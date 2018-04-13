@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>应用:flex-shrink替代float:left</title>
+    <style>
+        #myDIV1
+        {
+            width:400px;
+            height:300px;
+            border:1px solid black;
+            display:flex;
+        }
+
+        #myDIV1 div {
+            flex-basis: 400px;
+        }
+
+        #myDIV2
+        {
+            width:400px;
+            height:300px;
+            display:flex;
+            border:1px solid black;
+        }
+
+        #myDIV2 div {
+            flex-basis: 100px;
+        }
+
+
+        #myDIV3
+        {
+            width:400px;
+            height:300px;
+            display:flex;
+            border:1px solid black;
+            flex-wrap: wrap;
+            -webkit-flex-wrap: wrap;
+        }
+
+        #myDIV3 div {
+            height:50px;
+            flex-basis: 100px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h4>DEMO1 轮播图使用 配合 transform位移</h4>
+    <div id="myDIV1">
+        <div style="background-color:coral;height:100%;flex-shrink:0;">红色</div>
+        <div style="background-color:lightblue;height:100%;flex-shrink:0;">蓝色</div>
+        <div style="background-color:lightgreen;height:100%;flex-shrink:0;"></div>
+        <div style="background-color:#fcf;height:100%;flex-shrink:0;"></div>
+    </div>
+    <br/>
+    <h4>DEMO2</h4>
+    <div id="myDIV2">
+        <div style="background-color:coral;height:100%;flex-shrink:0;">红色</div>
+        <div style="background-color:lightblue;height:100%;flex-shrink:0;">蓝色</div>
+        <div style="background-color:lightgreen;height:100%;flex-shrink:0;"></div>
+        <div style="background-color:#fcf;height:100%;flex-shrink:0;"></div>
+    </div>
+
+    <h4>DEMO3 与float:left还是有区别，换行不紧凑</h4>
+    <div id="myDIV3">
+        <div style="background-color:coral;flex-shrink:0;">红色</div>
+        <div style="background-color:lightblue;flex-shrink:0;">蓝色</div>
+        <div style="background-color:lightgreen;flex-shrink:0;"></div>
+        <div style="background-color:#fcf;flex-shrink:0;"></div>
+        <div style="background-color:#ccc;flex-shrink:0;"></div>
+    </div>
+
+</body>
+</html>

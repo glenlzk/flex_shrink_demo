@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex shrink demo</title>
+    <style>
+        #myDIV
+        {
+            width:300px;
+            height:300px;
+            border:1px solid black;
+            display:flex;
+        }
+
+        #myDIV div {
+            flex-basis: 100px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <p>点击“尝试一下”按钮设置 "myDIV" 元素内的所有 DIV 元素的 flex 属性。</p>
+
+
+    <div id="myDIV">
+        <div style="background-color:coral;height:100%;flex-shrink:1;">1</div>
+        <div style="background-color:lightblue;height:100%;flex-shrink:1;">2</div>
+        <div style="background-color:lightgreen;height:100%;flex-shrink:2;">3</div>
+        <div style="background-color:#fcf;height:100%;flex-shrink:2;">4</div>
+    </div>
+    <!--
+        #myDIV div每个弹性元素，原始宽度为100，父盒子(#myDIV)总宽度为300px;
+
+        #myDIV div四个子盒子原始总宽度为: 4*100 = 400px;
+
+        超出父盒子100px（400 - 300）
+
+        flex-shrink表示超出容器盒子部分(100px)按等分进行缩放
+
+        #myDIV div四个子盒子，按照（flex-shrink: 1 + 1 + 2 + 2）6等分进行缩放；
+
+        因此，第一个盒子缩放量为: 100（盒子原始宽度）— 100（超出容器盒子部分）* （1/6）(占用flex-shrink的1/6)= 83.33
+        因此，第二个盒子缩放量为: 100（盒子原始宽度）— 100（超出容器盒子部分）* （1/6）(占用flex-shrink的1/6)= 83.33
+        因此，第三个盒子缩放量为: 100（盒子原始宽度）— 100（超出容器盒子部分）* （2/6）(占用flex-shrink的2/6)= 66.67
+        因此，第四个盒子缩放量为: 100（盒子原始宽度）— 100（超出容器盒子部分）* （2/6）(占用flex-shrink的2/6)= 66.67
+
+        四个盒子总宽度按比例缩放为300px:
+        83.33 + 83.33 + 66.67 + 66.67 = 300;
+
+    -->
+</body>
+</html>

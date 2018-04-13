@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #myDIV
+        {
+            width:400px;
+            height:300px;
+            border:1px solid black;
+            display:flex;
+        }
+
+        #myDIV div {
+            flex-basis: 450px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="myDIV">
+        <div style="background-color:coral;height:100%;flex-shrink:1;">红色</div>
+        <div style="background-color:lightblue;height:100%;flex-shrink:1;">蓝色</div>
+        <div style="background-color:lightgreen;height:100%;flex-shrink:2;"></div>
+        <div style="background-color:#fcf;height:100%;flex-shrink:2;"></div>
+    </div>
+    <!--
+        结论:
+            1.如果缩放量为负数，且盒子没有内容，则盒子宽度小于0， 默认盒子宽度是0；
+                负数的部分，由其他不为0的盒子，按一样的缩放比例分担掉:
+                <div style="background-color:lightgreen;height:100%;flex-shrink:2;"></div>
+            2.如果所放量为负数，且盒子有内容，则盒子宽度小于0, 具体盒子宽度以其内容实际占用宽度为准，此时弹性宽度不为0:
+                盒子所占宽度(由剩余不为0的弹性盒子按比例进行缩放给出空间)
+                <div style="background-color:lightgreen;height:100%;flex-shrink:2;">我是内容</div>
+
+    -->
+    <!--
+            #myDIV div每个弹性元素，原始宽度为400，父盒子(#myDIV)总宽度为400px;
+
+            #myDIV div四个子盒子原始总宽度为: 4*450 = 1800px;
+
+            超出父盒子1400px（1800 - 400）
+
+            flex-shrink表示超出容器盒子部分(1400px)按等分进行缩放
+
+            #myDIV div四个子盒子，按照（flex-shrink: 1 + 1 + 2 + 2）6等分进行缩放；
+
+            因此，第一个盒子缩放量为: 450（盒子原始宽度）— 1400（超出容器盒子部分）* （1/6）(占用flex-shrink的1/6)= 216.67
+            因此，第二个盒子缩放量为: 450（盒子原始宽度）— 1400（超出容器盒子部分）* （1/6）(占用flex-shrink的1/6)= 216.67
+            因此，第三个盒子缩放量为: 450（盒子原始宽度）— 1400（超出容器盒子部分）* （2/6）(占用flex-shrink的2/6)= -16.67
+            因此，第四个盒子缩放量为: 450（盒子原始宽度）— 1400（超出容器盒子部分）* （2/6）(占用flex-shrink的2/6)= -16.67
+
+            四个盒子总宽度按比例缩放为300px:
+            216.67 + 216.67 - 16.67 - 16.67 = 400;
+
+        -->
+</body>
+</html>
